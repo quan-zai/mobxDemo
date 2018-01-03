@@ -8,7 +8,18 @@ module.exports = {
     hot: true,
     inline: true,
     contentBase: './app',
-    port: 8080
+    port: 8080,
+    proxy: {
+      '/api/*': {
+        target: 'http://localhost:4000'
+      },
+      '/oauth/*': {
+        target: 'http://localhost:4000'
+      },
+      '/ahoy/*': {
+        target: 'http://localhost:4000'
+      },
+    }
   },
   entry: path.resolve(__dirname, 'app/main.js'),
   output: {
@@ -18,7 +29,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.css$/, include: path.resolve(__dirname, 'app'), loader: 'style-loader!css-loader' },
+      { test: /\.css$/, include: path.resolve(__dirname, 'app'), loader: 'style-loader!css-loader?modules' },
       { test: /\.js[x]?$/, include: path.resolve(__dirname, 'app'), exclude: /node_modules/, loader: 'babel-loader' }
     ]
   },
@@ -27,6 +38,10 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new OpenBrowserPlugin({ url: 'http://localhost:8080' })
+    new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
+    new webpack.ProvidePlugin({
+      'Cookies': 'js-cookie',
+      'React': 'react',
+    }),
   ]
 };

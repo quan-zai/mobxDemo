@@ -1,19 +1,25 @@
-import React from 'react';
+import * as React from 'react'
+const styles = require('./App.css');
+import { observer } from 'mobx-react'
 
-require('./App.css');
 
-export default () => <h1>Hello World</h1>;
-
-/*
-export default class App extends React.Component {
+@observer
+class App extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <h1>Hello World</h1>
+      <ul>
+        {
+          this.props.store.todos.map(todo =>
+            <li>{todo.title}</li>
+          )
+        }
+      </ul>
     );
   }
 }
-*/
+
+export default App
