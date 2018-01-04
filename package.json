@@ -46,9 +46,11 @@
   "keywords": [
     "es6",
     "web app",
-    "boilerplate"
+    "mobx",
+    "react",
+    "webpack"
   ],
-  "author": "Ruan Yifeng",
+  "author": "xuzhengquan",
   "license": "MIT",
   "config": {
     "validate-commit-msg": {

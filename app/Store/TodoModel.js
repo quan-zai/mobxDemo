@@ -8,4 +8,5 @@ export default class TodoModel {
   constructor(title) {
     this.title = title;
   }
+
 }
