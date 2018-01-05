@@ -1,23 +1,15 @@
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import TodoModel from './Store/TodoModel'
-import TodoListModel from './Store/TodoListModel'
 import React from 'react'
+import { Provider } from 'mobx-react'
 
-const store = new TodoListModel()
+const stores = {
+
+}
 
 ReactDOM.render(
-  <App store={store} />,
+  <Provider {...stores} >
+    <App/>
+  </Provider>,
   document.body.appendChild(document.createElement('div'))
 );
-
-store.addTodo("Get coffee")
-store.addTodo("Write simpler code")
-store.todos[0].finished = true;
-
-setTimeout(() =>{
-  store.addTodo("Get a cookie as well")
-}, 2000)
-
-
-window.store = store

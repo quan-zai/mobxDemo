@@ -1,25 +1,32 @@
 import * as React from 'react'
 const styles = require('./App.css');
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 
-
+@inject()
 @observer
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
+
+    this.plusClick = this.plusClick.bind(this)
+    this.minusClick = this.minusClick.bind(this)
+  }
+
+
+  componentWillMount() {
+
   }
 
   render() {
     return (
-      <ul>
-        {
-          this.props.store.todos.map(todo =>
-            <li>{todo.title}</li>
-          )
-        }
-      </ul>
-    );
+      <div>
+        <p>Counter: <span id="counter"></span>
+          <br/>
+          <button onclick={() => this.plusClick()}> + </button>
+          <button onclick={() => this.minusClick()}> + </button>
+        </p>
+      </div>
+    )
   }
-}
 
-export default App
+}
