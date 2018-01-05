@@ -2,9 +2,10 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import React from 'react'
 import { Provider } from 'mobx-react'
+import TimerStore from "./Store/TimerStore";
 
 const stores = {
-
+  // TimerStore: new TimerStore()
 }
 
 ReactDOM.render(

@@ -1,17 +1,16 @@
-import * as React from 'react'
+import React from 'react'
 const styles = require('./App.css');
 import { observer, inject } from 'mobx-react'
+import TimerStore from '../Store/TimerStore'
 
-@inject()
+const timer_store = new TimerStore()
+
+// @inject('TimerStore')
 @observer
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-
-    this.plusClick = this.plusClick.bind(this)
-    this.minusClick = this.minusClick.bind(this)
   }
-
 
   componentWillMount() {
 
@@ -20,10 +19,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <p>Counter: <span id="counter"></span>
+        <p>Counter: <span id="counter">{timer_store.timer}</span>
           <br/>
-          <button onclick={() => this.plusClick()}> + </button>
-          <button onclick={() => this.minusClick()}> + </button>
+          <button onClick={() => timer_store.plusTime()}> + </button>
+          <button onClick={() => timer_store.minusTime()}> - </button>
         </p>
       </div>
     )
