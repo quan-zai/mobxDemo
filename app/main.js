@@ -5,7 +5,7 @@ import { Provider } from 'mobx-react'
 import TimerStore from "./Store/TimerStore";
 
 const stores = {
-  // TimerStore: new TimerStore()
+  timer_store: new TimerStore()
 }
 
 ReactDOM.render(

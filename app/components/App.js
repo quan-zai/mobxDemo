@@ -1,11 +1,11 @@
 import React from 'react'
 const styles = require('./App.css');
 import { observer, inject } from 'mobx-react'
-import TimerStore from '../Store/TimerStore'
+// import TimerStore from '../Store/TimerStore'
 
-const timer_store = new TimerStore()
+// const timer_store = new TimerStore()
 
-// @inject('TimerStore')
+@inject('timer_store')
 @observer
 export default class App extends React.Component {
   constructor(props) {
